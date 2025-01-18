@@ -27,7 +27,7 @@ This library provides a robust set of decorators for enhancing Python code funct
 ## 🚀 Installation
 
 ```bash
-pip install advanced-decorators
+pip install ornator
 ```
 
 ## 🛠 Function & Method Decorators
@@ -38,7 +38,7 @@ pip install advanced-decorators
 > Executes logic before the function call
 
 ```python
-from decorators import BeforeDecorator
+from ornator import BeforeDecorator
 
 class LoggingDecorator(BeforeDecorator):
     def __init__(self):
@@ -60,7 +60,7 @@ def process_data(pre, data):
 > Modifies the function's return value
 
 ```python
-from decorators import AfterDecorator
+from ornator import AfterDecorator
 
 class ResponseTransformer(AfterDecorator):
     def __init__(self):
@@ -83,7 +83,7 @@ def get_data():
 > Executes logic before and after the function call
 
 ```python
-from decorators import DualDecorator
+from ornator import DualDecorator
 
 class PerformanceMonitor(DualDecorator):
     def __init__(self):
@@ -112,7 +112,7 @@ def expensive_operation(pre):
 > Provides complete flexibility for custom logic
 
 ```python
-from decorators import EmptyDecorator
+from ornator import EmptyDecorator
 
 class Validator(EmptyDecorator):
     def validate(self, func, *args, **kwargs):
@@ -135,7 +135,7 @@ def process_data(*args):
 > Executes logic during class instantiation
 
 ```python
-from decorators import BeforeClassDecorator
+from ornator import BeforeClassDecorator
 
 class LoggingClassDecorator(BeforeClassDecorator):
     def __init__(self):
@@ -164,7 +164,7 @@ class User:
 > Modifies the class after its definition
 
 ```python
-from decorators import AfterClassDecorator
+from ornator import AfterClassDecorator
 
 class ValidationDecorator(AfterClassDecorator):
     def __init__(self):
@@ -197,7 +197,7 @@ class Person:
 
 #### 1. API Rate Limiting
 ```python
-from decorators import BeforeDecorator
+from ornator import BeforeDecorator
 import time
 
 class RateLimiter(BeforeDecorator):
@@ -224,7 +224,7 @@ def api_call(pre):
 
 #### 2. Caching with Expiration
 ```python
-from decorators import DualDecorator
+from ornator import DualDecorator
 from datetime import datetime, timedelta
 
 class CacheWithExpiration(DualDecorator):
@@ -354,7 +354,3 @@ class DebugDecorator(BeforeDecorator):
 
 debug = DebugDecorator().before
 ```
-
----
-
-For more information and updates, please visit our [GitHub repository](https://github.com/username/advanced-decorators).
