@@ -1,7 +1,6 @@
 from typing import TypeVar
 from functools import wraps
 from typing import Type, Callable
-from datetime import datetime
 
 T = TypeVar('T', bound=object)
 
@@ -54,7 +53,7 @@ class BeforeClassDecorator(BaseClassDecorator):
 class AfterClassDecorator(BaseClassDecorator):
     """Modifies class after its definition"""
     def after(self, **decorator_kwargs):
-        def class_decorator(cls: Type):
+        def class_decorator(cls: Type[T])->Type[T]:
             if not self.pos:
                 raise ValueError("Missing pos function")
             
@@ -65,7 +64,7 @@ class AfterClassDecorator(BaseClassDecorator):
 class DualClassDecorator(BaseClassDecorator):
     """Executes pre_handler during instantiation and modifies class methods"""
     def dual(self, **decorator_kwargs):
-        def class_decorator(cls: Type):
+        def class_decorator(cls: Type[T])->Type[T]:
             if not (self.pre and self.pos):
                 raise ValueError("Missing pre or pos functions")
 
@@ -90,10 +89,9 @@ class EmptyClassDecorator(BaseClassDecorator):
         if handler and not callable(handler):
             raise TypeError(f"Expected callable handler, got {type(handler)}")
 
-        def class_decorator(cls: Type):
+        def class_decorator(cls: Type[T])->Type[T]:
             if handler:
                 return handler(cls, **decorator_kwargs)
             return cls
 
         return class_decorator
-
