@@ -52,7 +52,7 @@ class LoggingDecorator(BeforeDecorator):
 logger = LoggingDecorator().before
 
 @logger()
-def process_data(pre, data):
+def process_data(data, pre=None):
     return f"Processing: {data}"
 ```
 
