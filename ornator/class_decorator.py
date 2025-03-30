@@ -77,8 +77,8 @@ class DualClassDecorator(BaseClassDecorator):
                 original_init(instance, *args, **kwargs)
 
             cls.__init__ = wrapped_init
-            modified_cls = self.pos(cls, **decorator_kwargs)
-            return modified_cls
+            self.pos(cls, **decorator_kwargs)
+            return cls
 
         return class_decorator
 
