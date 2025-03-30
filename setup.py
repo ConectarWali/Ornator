@@ -11,7 +11,7 @@ setup(
     version='0.0.2',
     description="""This library provides a robust set of decorators for enhancing Python code functionality. It includes:
  *Base decorator classes for extensibility *Monitoring and logging capabilities *Validation and security features *Caching and performance optimization *Support for both functions and classes""",
-    long_description=open('README.md').read(),
+    long_description=open('README.md', encoding="utf-8").read(),
     long_description_content_type='text/markdown',
     author='Conectar Wali SAS',
     author_email='dev@conectarwalisas.com.co',
