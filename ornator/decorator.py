@@ -37,6 +37,7 @@ class BeforeDecorator(BaseDecorator):
                 if not self.pre:
                     raise ValueError("Missing pre function")
                 pre_value = self.pre(*args, **kwargs, **decorator_kwargs)
+                kwargs.pop('pre', None)
                 return function(pre=pre_value, *args, **kwargs)
             return wrapper
         return outer_decorator
@@ -65,6 +66,7 @@ class DualDecorator(BaseDecorator):
                 if not (self.pre and self.pos):
                     raise ValueError("Missing pre or pos functions")
                 pre_value = self.pre(*args, **kwargs, **decorator_kwargs)
+                kwargs.pop('pre', None)
                 result = function(pre=pre_value, *args, **kwargs)
                 return self.pos(result, **decorator_kwargs)
             return wrapper
